@@ -1,0 +1,34 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+#video {
+  object-fit: cover !important;
+}
+
+.css-1wjk1gj-MuiTable-root,
+.css-quj9j6-MuiTable-root {
+  min-width: unset !important
+}
