@@ -38,13 +38,18 @@ export default function SignUp() {
     const data = new FormData(e.currentTarget);
     const name = data.get("name");
     const email = data.get("email");
+    const group = data.get("group");
     setLoading(true);
     try {
-      // const response = await axios.post("/user?ID=12345", {
-      //   name: name,
-      //   email: email,
-      // });
-      // console.log(response);
+      console.log(name, email, group)
+      axios.post('http://localhost:3800/join/adduser', {
+        name: name,
+        email: email,
+        group: group,
+      }).then(r => {
+        console.log(r)
+      })
+
 
       // Flip the form
 
@@ -113,6 +118,17 @@ export default function SignUp() {
                       name="email"
                       label="Email Address"
                       autoComplete="email"
+                    />
+                  </Grid>
+
+                  {/* Curss Input */}
+                  <Grid item xs={12}>
+                    <TextField
+                        required
+                        fullWidth
+                        type="text"
+                        name="group"
+                        label="Group (Year, group (Like PB-21))"
                     />
                   </Grid>
                 </Grid>

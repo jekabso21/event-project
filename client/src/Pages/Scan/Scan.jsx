@@ -25,16 +25,15 @@ export default function Scan() {
       qrScanSoundEffect.play();
       setLastScanResult(scanResult);
       setLoadding(true);
-
       // const response = await axios.post("/user?ID=12345", {
       //   qrData: scanResult,
       // });
       // console.log(response);
 
       // Remove setTimeout in production
-      setTimeout(() => {
-        setLoadding(false);
-      }, 3000);
+      // setTimeout(() => {
+      //   setLoadding(false);
+      // }, 3000);
 
     } catch (err) {
       console.log(err);
