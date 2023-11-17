@@ -1,8 +1,8 @@
-from fastapi import FastAPI
-import random
-from pydantic import BaseModel
-import mariadb
 import sys
+
+import mariadb
+from fastapi import FastAPI
+from pydantic import BaseModel
 
 # Connect to MariaDB Platform
 try:
@@ -22,6 +22,7 @@ except mariadb.Error as e:
 cur = conn.cursor()
 
 print(cur.execute("SELECT * FROM admin"))
+
 
 class UserPost(BaseModel):
     name: str
