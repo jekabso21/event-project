@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
+import axios from 'axios';
 // MUI
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -45,7 +46,7 @@ export default function LogIn() {
       //   email: email,
       //   password: password,
       // });
-      // console.log(response);
+      console.warn(email + " " + password);
 
       // ! Remove "setTimeout" in production
       setTimeout(() => {
