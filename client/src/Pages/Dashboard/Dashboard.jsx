@@ -20,7 +20,7 @@ export default function BasicTable() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-      axios.get('http://127.0.0.1:3800/users/get/allusers')
+      axios.get('http://15.204.213.220:3800/users/get/allusers')
           .then(response => {
               const users = response.data;
               if (users && Array.isArray(users) && users.length > 0) {

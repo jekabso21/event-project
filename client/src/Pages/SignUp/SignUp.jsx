@@ -42,7 +42,7 @@ export default function SignUp() {
     setLoading(true);
     try {
       console.log(name, email, group)
-      axios.post('http://localhost:3800/users/adduser', {
+      axios.post('http://15.204.213.220:3800/users/adduser', {
         "name": name,
         "email": email,
         "group": group,
