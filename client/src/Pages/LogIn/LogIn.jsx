@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Alerts from "../../components/alert";
 // MUI
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -32,6 +33,7 @@ export default function LogIn() {
   );
 
   const navigate = useNavigate(); //After Signin
+  const generateToken = () => {return 'Bearer ' + Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);}
 
   // Signin Button
   const handleSubmit = async (event) => {
@@ -42,16 +44,24 @@ export default function LogIn() {
     // const checkBox = document.getElementById('checkbox').checked //true or false
     setLoading(true);
     try {
-      // const response = await axios.post("/user?ID=12345", {
-      //   email: email,
-      //   password: password,
-      // });
+      const response = await axios.post("http://localhost:3800/admin/login", {
+      "email": email,
+      "password": password,
+    });
       console.warn(email + " " + password);
 
       // ! Remove "setTimeout" in production
-      setTimeout(() => {
-        navigate("/admin", { replace: true });
-      }, 3000);
+      // setTimeout(() => {
+      //   navigate("/admin", { replace: true });
+      // }, 3000);
+      console.log("RESPONSE: " + response.data.status);
+      if (response.data.status === "success") {
+        navigate("/admin", {replace: true});
+        localStorage.setItem("userToken", generateToken());
+      } else {
+        setLoading(false);
+        setAlertMsg(response.data.status);
+      }
 
       console.log(email, password);
     } catch (error) {

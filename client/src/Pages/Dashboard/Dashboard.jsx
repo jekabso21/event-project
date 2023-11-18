@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from 'react';
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,27 +6,35 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
+import axios from "axios";
 function createData(name, email, date, isAttended) {
   return { name, email, date, isAttended };
 }
-
+let newData = [];
 const rows = [
   createData("John Doe", "johndoe@gmail.com", "14/8/2025", true),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", true),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", true),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", true),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
+
 ];
 
 export default function BasicTable() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+      axios.get('http://127.0.0.1:3800/users/get/allusers')
+          .then(response => {
+              const users = response.data;
+              if (users && Array.isArray(users) && users.length > 0) {
+                  users.forEach(user => {
+                      const userData = createData(user.name, user.email, user.date, user.scanned);
+                      newData.push(userData);
+                  });
+                  setData(newData);
+              }
+          })
+          .catch(error => {
+              console.error("There was an issue fetching users: ", error);
+          })
+  }, []);
   return (
     <TableContainer component={Paper}>
       <Table
@@ -49,7 +57,7 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {newData.map((row) => (
             <TableRow
               key={row.email}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
