@@ -44,7 +44,7 @@ export default function LogIn() {
     // const checkBox = document.getElementById('checkbox').checked //true or false
     setLoading(true);
     try {
-      const response = await axios.post("http://15.204.213.220:3800/admin/login", {
+      const response = await axios.post("http://0.0.0.0:3800/admin/login", {
       "email": email,
       "password": password,
     });

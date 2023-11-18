@@ -47,7 +47,7 @@ export default function Scan() {
       qrScanSoundEffect.play();
       setLastScanResult(scanResult);
       setLoadding(true);
-      const response = await axios.post("http://15.204.213.220:3800/user/isvalid", {
+      const response = await axios.post("http://0.0.0.0:3800/user/isvalid", {
         "qrData": scanResult,
       });
       console.log("Check " + response.data.scanned)
@@ -74,7 +74,7 @@ export default function Scan() {
   const confirmUser = async () => {
   try {
     console.log("QR: " + userData.qr)
-    const response = await axios.post("http://15.204.213.220:3800/user/confirm", {
+    const response = await axios.post("http://0.0.0.0:3800/user/confirm", {
       "qrData": userData.qr,
     });
 
