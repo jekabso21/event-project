@@ -31,11 +31,12 @@ try:
     conn = mariadb.connect(
         user="root",
         password="GKCi651wSa3LutHX",
-        host="15.204.213.220",
+        host="127.0.0.1",
         port=3306,
         database="party-event"
 
     )
+    print("Connected to MariaDB Platform")
 except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
     sys.exit(1)
@@ -46,7 +47,6 @@ cur = conn.cursor()
 origins = [
     "http://localhost:3000",  # Change this according to your needs, or simply use "*" but consider the security implications
 ]
-
 
 
 print(cur.execute("SELECT * FROM admin"))
