@@ -48,7 +48,7 @@ origins = [
 ]
 
 
-
+print(conn.is_connected())
 print(cur.execute("SELECT * FROM admin"))
 
 
