@@ -1,0 +1,6 @@
+mariadb~=1.1.8
+pytz~=2023.3.post1
+fastapi~=0.104.1
+pydantic~=2.5.1
+cryptography~=41.0.5
+DateTime~=5.3

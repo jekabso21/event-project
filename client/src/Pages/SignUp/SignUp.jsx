@@ -42,10 +42,10 @@ export default function SignUp() {
     setLoading(true);
     try {
       console.log(name, email, group)
-      axios.post('http://localhost:3800/join/adduser', {
-        name: name,
-        email: email,
-        group: group,
+      axios.post('http://0.0.0.0:3800/users/adduser', {
+        "name": name,
+        "email": email,
+        "group": group,
       }).then(r => {
         console.log(r)
       })
@@ -53,10 +53,10 @@ export default function SignUp() {
 
       // Flip the form
 
-      setTimeout(() => {
-        document.querySelector(`.${css.flip_card_inner}`).style.transform =
-          "rotateY(180deg)";
-      }, 3000);
+      // setTimeout(() => {
+      //   document.querySelector(`.${css.flip_card_inner}`).style.transform =
+      //     "rotateY(180deg)";
+      // }, 3000);
       
     } catch (error) {
       setLoading(false);
