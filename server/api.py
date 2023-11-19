@@ -31,7 +31,7 @@ try:
     conn = mariadb.connect(
         user="root",
         password="GKCi651wSa3LutHX",
-        host="127.0.0.1",
+        host="15.204.213.220",
         port=3306,
         database="party-event"
 
@@ -45,7 +45,7 @@ except mariadb.Error as e:
 cur = conn.cursor()
 
 origins = [
-    "http://localhost:3000",  # Change this according to your needs, or simply use "*" but consider the security implications
+    "http://0.0.0.0:3000",  # Change this according to your needs, or simply use "*" but consider the security implications
 ]
 
 
@@ -62,7 +62,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
