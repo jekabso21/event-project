@@ -31,7 +31,7 @@ try:
     conn = mariadb.connect(
         user="root",
         password="GKCi651wSa3LutHX",
-        host="15.204.213.220",
+        host="127.0.0.1",
         port=3306,
         database="party-event"
 
