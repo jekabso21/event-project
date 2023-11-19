@@ -36,6 +36,7 @@ try:
         database="party-event"
 
     )
+    print("Connected to MariaDB Platform")
 except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
     sys.exit(1)
@@ -48,7 +49,6 @@ origins = [
 ]
 
 
-print(conn.is_connected())
 print(cur.execute("SELECT * FROM admin"))
 
 
