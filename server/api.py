@@ -30,7 +30,7 @@ fernet = Fernet(key)
 try:
     conn = mariadb.connect(
         user="root",
-        password="GKCi651wSa3LutHX",
+        password="admin",
         host="15.204.213.220",
         port=3306,
         database="party-event"
@@ -106,7 +106,7 @@ async def create_post(post: UserPost):
 @app.get("/users/get/allusers")
 async def get_all_posts():
     #Get all the users from the database
-    cur.execute("SELECT name, email, registered, scaned FROM users")
+    cur.execute("SELECT name, email, registered, scanned FROM users")
     users = cur.fetchall()
     users_list = []
     for user in users:
