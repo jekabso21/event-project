@@ -128,7 +128,7 @@ async def read_items(item: Item):
     #return name, email, group, registered, scaned
     print(qr)
     if qr is None:
-    print("Is Not Valid")
+        print("Is Not Valid")
         return {"message": "QR code not found"}
     else:
         print(qr[7])
