@@ -31,7 +31,7 @@ try:
     conn = mariadb.connect(
         user="root",
         password="admin",
-        host="159.89.17.59",
+        host="15.204.213.220",
         port=3306,
         database="party-event"
 
@@ -95,7 +95,7 @@ async def create_post(post: UserPost):
     time = datetime.now(pytz.timezone('Europe/Riga'))
     print(time)
 
-    cur.execute("INSERT INTO users (name, email, `group`, qrcode, registered) VALUES (?, ?, ?, ?, ?)", (post.name, post.email, post.group, qr_code, time))
+    cur.execute("INSERT INTO users (name, email, `group`, qr, registered) VALUES (?, ?, ?, ?, ?)", (post.name, post.email, post.group, qr_code, time))
     conn.commit()
     return post
 
