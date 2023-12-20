@@ -132,8 +132,8 @@ async def read_items(item: Item):
         return {"message": "QR code not found"}
     else:
         print("DEBUG")
-        print(qr[1], qr[2], qr[3], qr[5], qr[6], qr[4], qr[7])
-        return {"name": qr[1], "email": qr[2], "group": qr[3], "registered": qr[5], "scanned": qr[6], "qr": qr[4], "hasguest": qr[7]}
+        print(qr[0], qr[1], qr[2], qr[3], qr[5], qr[6], qr[4], qr[7])
+        return {"name": qr[0], "email": qr[1], "group": qr[2], "registered": qr[4], "scanned": qr[5], "qr": qr[3], "hasguest": qr[6], "isguest": qr[7]}
 
 
 @app.post("/user/confirm")
