@@ -131,7 +131,8 @@ async def read_items(item: Item):
         print("Is Not Valid")
         return {"message": "QR code not found"}
     else:
-        print(qr[7])
+        print("DEBUG")
+        print("name": qr[1], "email": qr[2], "group": qr[3], "registered": qr[5], "scanned": qr[6], "qr": qr[4], "hasguest": qr[7], "isguest": qr[8])
         return {"name": qr[1], "email": qr[2], "group": qr[3], "registered": qr[5], "scanned": qr[6], "qr": qr[4], "hasguest": qr[7], "isguest": qr[8]}
 
 
