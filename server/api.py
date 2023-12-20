@@ -159,7 +159,7 @@ async def admin_login(login: Login):
         print("error")
         return {"status": "error"}
     else:
-        if login.password == auth[2]:
+        if login.password == auth[3]:
             return {"status": "success"}
         else:
             print("error")
