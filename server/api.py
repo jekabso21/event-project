@@ -123,7 +123,7 @@ class Item(BaseModel):
 async def read_items(item: Item):
     print(item.qrData)
     #search qr in database
-    cur.execute("SELECT * FROM users WHERE qrcode=?", (item.qrData,))
+    cur.execute("SELECT * FROM users WHERE qr=?", (item.qrData,))
     qr = cur.fetchone()
     #return name, email, group, registered, scaned
     if qr is None:
@@ -136,13 +136,13 @@ async def read_items(item: Item):
 @app.post("/user/confirm")
 async def confirm_user(item: Item):
     #search qr in database
-    cur.execute("SELECT * FROM users WHERE qrcode=?", (item.qrData,))
+    cur.execute("SELECT * FROM users WHERE qr=?", (item.qrData,))
     qr = cur.fetchone()
     print(qr)
     if qr is None:
         return {"message": "QR code not found"}
     else:
-        cur.execute("UPDATE users SET scaned=? WHERE qrcode=?", (1, item.qrData))
+        cur.execute("UPDATE users SET scaned=? WHERE qr=?", (1, item.qrData))
         conn.commit()
         return {"status": "success"}
 
