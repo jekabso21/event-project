@@ -145,7 +145,7 @@ async def confirm_user(item: Item):
     if qr is None:
         return {"message": "QR code not found"}
     else:
-        cur.execute("UPDATE users SET scaned=? WHERE qr=?", (1, item.qrData))
+        cur.execute("UPDATE users SET scanned=? WHERE qr=?", (1, item.qrData))
         conn.commit()
         return {"status": "success"}
 
