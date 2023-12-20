@@ -126,11 +126,13 @@ async def read_items(item: Item):
     cur.execute("SELECT * FROM users WHERE qr=?", (item.qrData,))
     qr = cur.fetchone()
     #return name, email, group, registered, scaned
+    print(qr)
     if qr is None:
+    print("Is Not Valid")
         return {"message": "QR code not found"}
     else:
         print(qr[7])
-        return {"name": qr[1], "email": qr[2], "group": qr[3], "registered": qr[6], "scanned": qr[7], "qr": qr[4]}
+        return {"name": qr[1], "email": qr[2], "group": qr[3], "registered": qr[5], "scanned": qr[6], "qr": qr[4], "hasguest": qr[7], "isguest": qr[8]}
 
 
 @app.post("/user/confirm")
