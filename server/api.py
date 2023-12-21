@@ -30,7 +30,7 @@ fernet = Fernet(key)
 try:
     conn = mariadb.connect(
         user="root",
-        password="admin",
+        password="Jekabsoss142233",
         host="159.89.17.59",
         port=3306,
         database="party-event"
